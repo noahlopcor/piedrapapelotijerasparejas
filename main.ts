@@ -1,6 +1,6 @@
 radio.onReceivedNumber(function (receivedNumber) {
     jugada_2 = randint(1, 3)
-    if (jugada_2 == 1) {
+    if (receivedNumber == 1) {
         basic.showLeds(`
             . . . . .
             . # # # .
@@ -8,7 +8,17 @@ radio.onReceivedNumber(function (receivedNumber) {
             . # # # .
             . . . . .
             `)
-    } else if (jugada_2 == 2) {
+        if (receivedNumber == 1) {
+            basic.showIcon(IconNames.No)
+            radio.sendNumber(6)
+        } else if (receivedNumber == 1) {
+            basic.showIcon(IconNames.Sad)
+            radio.sendNumber(5)
+        } else {
+            basic.showIcon(IconNames.Happy)
+            radio.sendNumber(4)
+        }
+    } else if (receivedNumber == 2) {
         basic.showLeds(`
             # # # # #
             # . . . #
@@ -16,6 +26,16 @@ radio.onReceivedNumber(function (receivedNumber) {
             # . . . #
             # # # # #
             `)
+        if (receivedNumber == 2) {
+            basic.showIcon(IconNames.No)
+            radio.sendNumber(6)
+        } else if (receivedNumber == 2) {
+            basic.showIcon(IconNames.Sad)
+            radio.sendNumber(5)
+        } else {
+            basic.showIcon(IconNames.Happy)
+            radio.sendNumber(4)
+        }
     } else {
         basic.showLeds(`
             # . . . #
@@ -37,6 +57,7 @@ input.onGesture(Gesture.Shake, function () {
             . # # # .
             . . . . .
             `)
+        basic.pause(1500)
     } else if (jugada == 2) {
         basic.showLeds(`
             # # # # #
